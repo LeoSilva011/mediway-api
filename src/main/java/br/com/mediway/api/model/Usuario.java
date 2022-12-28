@@ -44,11 +44,6 @@ public class Usuario implements UserDetails{
 	private List<Address> address;
 	
 	
-	
-	
-	
-
-
 
 	public List<Address> getAddress() {
 		return address;
