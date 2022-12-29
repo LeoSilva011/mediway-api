@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,7 +24,6 @@ public class Usuario implements UserDetails{
 	
 	
 	private static final long serialVersionUID = 1L;
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +36,11 @@ public class Usuario implements UserDetails{
 	private LocalDate dateBirth;
 	private Integer color;
 	
+	
+	@OneToOne(mappedBy = "usuario")
+	private Patients patients;
+	
+	
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Perfil> perfis = new ArrayList<>();
 	
@@ -44,6 +49,14 @@ public class Usuario implements UserDetails{
 	private List<Address> address;
 	
 	
+
+	public Patients getPatients() {
+		return patients;
+	}
+
+	public void setPatients(Patients patients) {
+		this.patients = patients;
+	}
 
 	public List<Address> getAddress() {
 		return address;
