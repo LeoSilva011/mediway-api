@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -35,6 +36,11 @@ public class Usuario implements UserDetails{
 	private String senha;
 	private LocalDate dateBirth;
 	private Integer color;
+	
+	
+	@OneToOne(mappedBy = "usuario")
+	private Doctor doctor;
+	
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Perfil> perfis = new ArrayList<>();
@@ -137,6 +143,14 @@ public class Usuario implements UserDetails{
 	public boolean isEnabled() {
 
 		return true;
+	}
+
+	public Doctor getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
 	}
 	
 	

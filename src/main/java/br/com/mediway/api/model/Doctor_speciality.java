@@ -5,18 +5,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
-public class doctor {
 
-	
+@Entity
+public class Doctor_speciality {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_doctor;
-	private String category;
-	private String document;
-	
-	private Long id_usuario;
-	
-	
-	
+	private Long id_doctor_spciality;
 }
